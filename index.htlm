@@ -1,3 +1,78 @@
-# maaliyad
-qorshe maaliyadeed bil walba
+<!DOCTYPE html><html lang="so">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qorshaha Lacagta Bilaha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    h2 {
+      color: #2b6777;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+    }
+    .section {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .result {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h2>Qorshaha Maareynta Lacagta Bilaha</h2>
+  <div class="section">
+    <label for="income">Dakhligaaga bishii ($):</label>
+    <input type="number" id="income" placeholder="Tusaale: 400">
+  </div>  <div class="section">
+    <h3>Kharashaadkaaga</h3>
+    <label>Kirada:</label>
+    <input type="number" id="kirada" value="60"><label>Cuntada (Rashin):</label>
+<input type="number" id="cuntada" value="200">
 
+<label>Internet:</label>
+<input type="number" id="internet" value="21">
+
+<label>Biyo & Koronto:</label>
+<input type="number" id="koronto" value="20">
+
+<label>Qaraan:</label>
+<input type="number" id="qaraan" value="5">
+
+  </div>  <div class="section">
+    <button onclick="xisaabi()">Xisaabi Qorshaha</button>
+    <p class="result" id="natiijo"></p>
+  </div>  <script>
+    function xisaabi() {
+      const income = parseFloat(document.getElementById('income').value);
+      const kirada = parseFloat(document.getElementById('kirada').value);
+      const cuntada = parseFloat(document.getElementById('cuntada').value);
+      const internet = parseFloat(document.getElementById('internet').value);
+      const koronto = parseFloat(document.getElementById('koronto').value);
+      const qaraan = parseFloat(document.getElementById('qaraan').value);
+
+      const kharashWadareed = kirada + cuntada + internet + koronto + qaraan;
+      const kayd = (income - kharashWadareed) * 0.6;
+      const wants = (income - kharashWadareed) * 0.4;
+      const hartay = income - kharashWadareed;
+
+      document.getElementById('natiijo').innerHTML = `
+        Kharashyada waa $${kharashWadareed.toFixed(2)}<br>
+        Kayd & Maalgelin: $${kayd.toFixed(2)}<br>
+        Rabitaanka: $${wants.toFixed(2)}<br>
+        Lacagta kugu hartay: $${hartay.toFixed(2)}
+      `;
+    }
+  </script></body>
+</html>
